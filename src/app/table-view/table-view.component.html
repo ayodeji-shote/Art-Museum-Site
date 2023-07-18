@@ -1,0 +1,67 @@
+<h1 class =" apititle" > Chicago Art Mueseum</h1>
+<div class="content">
+  <div
+    class="spinner-border text-primary"
+    role="status"
+    *ngIf="!artworksLoaded"
+  >
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <!-- Image Column -->
+      <ng-container matColumnDef="image_id">
+        <th mat-header-cell *matHeaderCellDef>Image Preview</th>
+        <td mat-cell *matCellDef="let element">
+          <img
+            src="https://www.artic.edu/iiif/2/{{
+              element.image_id
+            }}/full/100,/0/default.jpg"
+            alt=""
+            srcset=""
+          />
+        </td>
+      </ng-container>
+
+      <!-- title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+
+      <!-- origin Column -->
+      <ng-container matColumnDef="place_of_origin">
+        <th mat-header-cell *matHeaderCellDef>Place Of Origin</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.place_of_origin }}
+        </td>
+      </ng-container>
+
+      <!-- date Column -->
+      <ng-container matColumnDef="date_display">
+        <th mat-header-cell *matHeaderCellDef>Date Displayed</th>
+        <td mat-cell *matCellDef="let element">{{ element.date_display }}</td>
+      </ng-container>
+
+      <!-- Artistname Column -->
+      <ng-container matColumnDef="artist_title">
+        <th mat-header-cell *matHeaderCellDef>Artist Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.artist_title}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns " (click)="todetailview(row.id)"></tr>
+    </table>
+
+    <mat-paginator
+      class="mat-paginator-sticky"
+      [pageSizeOptions]="[5, 10, 20]"
+      [pageIndex]="pageIndex-1"
+      pageSize="20"
+      aria-label="Select page of periodic elements"
+      [length]="pageTotal"
+      (page)="PageAmount($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

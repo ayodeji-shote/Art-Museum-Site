@@ -1,0 +1,40 @@
+.apititle{
+  text-align: center;
+  margin: auto;
+  font-family: 'Lexend Deca', sans-serif; 
+  color: black;  
+  background-color: white;
+  
+}
+.content {
+  height: 85%;
+  overflow: auto;
+  background-repeat:no-repeat;
+}
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
+.demo-toggles {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .demo-toggles * {
+    margin-bottom: 16px;
+  }
+  
+  .demo-options {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+  }
+  
+  .demo-data * {
+    margin: 16px 0;
+  }
+  
+  .demo-paginator {
+    width: 600px;
+  }
